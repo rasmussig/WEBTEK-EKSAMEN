@@ -1,0 +1,43 @@
+<!-- Opgave 1: Lav ændringer i kopien så tekstens farve svarer til følgende:
+1. For datapunkter under 10 skal teksten være blå.
+2. For datapunkter fra 10 til 20 skal teksten være grøn.
+3. For datapunkter over 20 skal teksten være lilla.
+4. Sæt nogle flere tal ind i datasættet efter eget valg.
+Tjek at resultatet ser korrekt ud.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>D3-eksempel</title>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        const dataset = [0, 2.5, 5, 10, 15, 20, 25, 30, 35];
+
+        d3.select("body").selectAll("p")
+            .data(dataset)
+            .enter()
+            .append("p")
+            .text(function (d) {
+                // Datapunktet indgår i den tekst der indsættes - to steder!
+                return `${d} gange 100 er ${d * 100}`
+            })
+            .style("color", function (d) {
+                // Denne funktion bruges til at farve teksten afhængigt af datapunktet 'd'
+                if (d < 10) {
+                    return "blue";
+                } else if (d <= 20) {
+                    return "green";
+                } else {
+                    return "purple";
+                } 
+            });
+
+            // siuuuu
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+    <script>
+
+        const dataset = [
+            [5], [10], [15], [20], [30], [40], [50]
+        ];
+
+       
+
+        const min = d3.min(dataset, d => d[0]);
+        const max = d3.max(dataset, d => d[0]);
+        const count = d3.count(dataset, d => d[0]);
+
+        console.log("Min værdi:", min);
+        console.log("Max værdi:", max);
+        console.log("Tal mellem min og max:", count);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Opgave 8.2</title>
+  <script type="text/javascript" src="d3.js"></script>
+  <style type="text/css">
+  </style>
+</head>
+
+<body>
+  <h1>Cirkler der hopper</h1>
+
+  <button id="klik"><b>Tryk her for at starte animationen!</b></button>
+
+  <br/>
+
+  <script type="text/javascript">
+
+    const data = ["darkred", "green", "orange"];
+    
+    // Lav en svg
+    const svg = d3.select("body")
+      .append("svg")
+      .attr("width", 500)
+      .attr("height", 500);
+
+      function animer() {
+        let d = 0;
+        console.info("animer");
+        for (let id of ["#c1", "#c2", "#c3"])
+        {
+            d3.select(id)
+          .transition() // Start en animation
+          .duration(150)
+          .delay(d)
+          .attr("cy", 150)
+          .transition() 
+          .duration(150)
+          .attr("cy", 100);
+          d += 100;
+        }
+      }  
+
+    svg.selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("id", function (d,i) {
+         return "c" + (i+1);
+      })
+      .attr("cx", function(d, i) { return i * 100 + 100; } )
+      .attr("cy", 100)
+      .attr("r", 40)
+      .attr("fill", function(d) { return d; } );
+
+      
+
+
+    // Knapen vælges via dens id 'klik'
+    d3.select("#klik")
+      // Koden herunder køres kun ved tryk på knappen
+      .on("click", function() {
+            animer();
+            console.info("on click");
+            setInterval(animer, 500);
+      });
+  </script>
+</body>
+
+</html>

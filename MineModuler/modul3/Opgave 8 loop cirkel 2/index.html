@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Flot grafik</title>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <svg id="grafik" width="500" height="500"></svg>
+
+  <script>
+
+    for (let i = 1; i < 8; i++) {
+      radius = 8 * i;
+      x_aksel = 60 * i;
+      drawCircle(x_aksel, 200, radius, "pink");
+    }
+  </script>
+</body>
+
+</html>

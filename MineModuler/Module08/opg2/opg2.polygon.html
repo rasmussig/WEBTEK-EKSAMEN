@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Animeret trekant</title>
+  <script type="text/javascript" src="../d3.js"></script>
+  <style type="text/css">
+  </style>
+</head>
+
+<body>
+  <h1>Animeret trekant</h1>
+
+  <button id="klik"><b>Tryk her for at starte animationen!</b></button>
+
+  <br />
+
+  <script type="text/javascript">
+
+    // Lav en svg
+    const svg = d3.select("body")
+      .append("svg")
+      .attr("width", 500)
+      .attr("height", 500);
+
+    // Lav trekanten som et polygon
+    const triangle = svg.append("polygon")
+      .attr("points", "100,100 200,200 50,250")
+      .attr("fill", "red")
+      .attr("stroke", "black")
+      .attr("stroke-width", 2);
+
+    // Animer hjørnerne og farven
+    d3.select("#klik")
+      // Koden herunder køres kun ved tryk på knappen
+      .on("click", function () {
+
+        // Animer størrelsen af rektanglen
+        d3.selectAll("polygon")
+          .transition()
+          .duration(4000)
+          .attr("points", "100,300 200,100 300,300")
+          .attr("fill", "blue")
+          .attr("stroke", "green")
+          .attr("stroke-width", 4);
+      });
+
+  </script>
+</body>
+
+</html>

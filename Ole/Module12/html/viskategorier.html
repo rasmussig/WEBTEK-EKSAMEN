@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>henter data</title>
+  <script type="text/javascript" src="d3.js"></script>
+  <style type="text/css">
+  </style>
+</head>
+
+<body>
+  <h1>Kategorier</h1>
+  <br/>
+
+  <script type="text/javascript">
+    
+    // Lav en svg
+    const svg = d3.select("body")
+      .append("svg")
+      .attr("width", 800)
+      .attr("height", 500);
+
+
+
+
+    d3.json("http://localhost:3000/categories").then( function(dataset) {
+
+      // Lav søjler
+    svg.selectAll("rect")
+      .data(dataset)
+      .enter()
+      .append("rect")
+      .attr("x", function(d, i) { return i * 10; } )
+      .attr("y", function(d) { return 500-(d.count*4); })
+      .attr("width", 8)
+      .attr("height", function(d) {return 4*d.count; })
+      .attr("fill", "blue");
+
+
+
+    })  
+    
+
+    
+
+  </script>
+</body>
+
+</html>

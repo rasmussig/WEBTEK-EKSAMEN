@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>D3-eksempel</title>
+  <script type="text/javascript" src="d3.js"></script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // Width og height
+    const w = 1000; //Gør søjlerne bredere eller smallere
+    const h = 300; // Gør at søjlerne ikke bliver "klippet over"
+    const barPadding = 10; // Bruges til at lave afstand imellem søjler
+
+    // Selve datasættet
+    let dataset = [5, 10, 2, 18, 15, 13,
+      11, 12, 15, 18, 23, 25, 55, 66, 52, 51, 25, 33, 14, 13];
+
+    // Lav SVG-elementet
+    const svg = d3.select("body")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+    // Lave barchart (søjlediagram)
+    svg.selectAll("rect")
+      .data(dataset)
+      .enter()
+      .append("rect")
+      // 'd' er datapunktet
+      // 'i' er index i datasættet
+      .attr("x", function (d, i) {
+        // Søjlerne spredes jævnt ud over 'w'
+        return i * (w / dataset.length);
+      })
+      .attr("y", function (d) {
+        // 'y' er position for søjlens øverste kant
+        // Husk, y-aksen vender på hovedet!
+        return h - (d * 4);
+      })
+      // Bredden er fast - og afhænger af 'w' og antallet af datapunkter
+      .attr("width", w / dataset.length - barPadding) // Padding skaber luft imellem søjler
+      // Højden er datapunktet * 4. 
+      .attr("height", function (d) {
+        return d * 4;
+      })
+      // Alle søjler er farvet 'teal'
+      .attr("fill", "teal");
+  </script>
+</body>
+
+</html>

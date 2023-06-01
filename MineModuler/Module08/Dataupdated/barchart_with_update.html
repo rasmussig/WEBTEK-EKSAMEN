@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>D3-eksempel</title>
+  <script type="text/javascript" src="../d3.js"></script>
+</head>
+
+<body>
+  <h1>Eksempel med opdateringer...</h1>
+  <button id="btn1">Opdater</button>
+  <div id="div_for_svg"></div>
+  <script type="text/javascript">
+    // Width og height
+    const w = 500;
+    const h = 500;
+    const barPadding = 1; // Bruges til at lave afstand imellem søjler
+
+    // Selve datasættet
+    let dataset = [5, 10, 15, 20, 25, 30, 25, 20, 15, 10, 5];
+
+    // Lav SVG-elementet
+    let svg = d3.select("#div_for_svg")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+    // Lave barchart (søjlediagram)
+    svg.selectAll("rect")
+      .data(dataset)
+      .enter()
+      .append("rect")
+      // 'd' er datapunktet
+      // 'i' er index i datasættet
+      .attr("x", function (d, i) {
+        // Søjlerne spredes jævnt ud over 'w'
+        return i * Math.floor(w / dataset.length);
+      })
+      .attr("y", function (d) {
+        // 'y' er position for søjlens øverste kant
+        // Husk, y-aksen vender på hovedet!
+        return h - (d * 4);
+      })
+      // Bredden er fast - og afhænger af 'w' og antallet af datapunkter
+      .attr("width", w / dataset.length - barPadding) // Padding skaber luft imellem søjler
+      // Højden er datapunktet * 4. 
+      .attr("height", function (d) {
+        return d * 4;
+      })
+      // Alle søjler er farvet 'teal'
+      .attr("fill", "teal");
+
+      d3.select("#btn1")
+        .on("click", function() {
+
+          for (let i=0; i < dataset.length; i++)
+             dataset[i] += (Math.floor(Math.random()*5)+1);
+
+          svg.selectAll("rect")
+             .data(dataset) // bliver bundet igen INGEN enter() og append()
+             // x-attributten opdateres IKKE fordi den skal bevares
+             .attr("y", function (d) {
+                   return h - (d * 4);
+             })
+             .attr("height", function (d) {
+                     return d * 4;
+              });
+            
+        });
+  </script>
+</body>
+
+</html>

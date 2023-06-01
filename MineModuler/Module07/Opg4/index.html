@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Scatter Plot</title>
+  <script type="text/javascript" src="../d3.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <script type="text/javascript">
+  //DELOPGAVE 1
+ const scale = d3.scaleLinear()
+      .domain([50, 250])  //50 kan også sættes til 0 i dette eksempel
+      .range([200, 1000]); //Hvis 50 er sat til 0 skal 200 sættes til 0
+
+console.log(scale(50));  // Skal udskrive '200'
+console.log(scale(100)); // Skal udskrive '400'
+console.log(scale(250)); // Skal udskrive '1000'
+
+//DELOPGAVE 2
+const scale2 = d3.scaleLinear()
+      .domain([0, 200])  
+      .range([100, 200]); 
+
+console.log(scale2(0));   // Skal udskrive '100'
+console.log(scale2(100)); // Skal udskrive '150'
+console.log(scale2(200)); // Skal udskrive '200'
+
+//DELOPGAVE 3
+const scale3 = d3.scaleLinear()
+      .domain([100, 0])  //VENDER DOMAIN OM.
+      .range([0, 500]); 
+
+console.log(scale3(0));   // Skal udskrive '500'
+console.log(scale3(50)); // Skal udskrive '250'
+console.log(scale3(100)); // Skal udskrive '0'
+
+</script>
+</body>
+
+</html>

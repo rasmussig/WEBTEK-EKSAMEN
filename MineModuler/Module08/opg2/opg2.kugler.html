@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hoppende kugler</title>
+  <script type="text/javascript" src="../d3.js"></script>
+  <style type="text/css">
+    circle {
+      fill: steelblue;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Hoppende kugler</h1>
+
+  <button id="klik"><b>Tryk her for at starte animationen!</b></button>
+
+  <br />
+
+  <svg width="500" height="300">
+    <circle cx="50" cy="100" r="20"></circle>
+    <circle cx="150" cy="100" r="20"></circle>
+    <circle cx="250" cy="100" r="20"></circle>
+  </svg>
+
+  <script type="text/javascript">
+    const svg = d3.select("svg");
+    const circles = svg.selectAll("circle")
+      .data([50, 150, 250]) // x-koordinater for kuglerne
+      .join("circle")
+      .attr("cx", d => d)
+      .attr("cy", 100)
+      .attr("r", 20)
+      .attr("fill", "steelblue");
+
+    const duration = 1000; // varighed af animationen i ms
+    const amplitude = 50; // størrelsen af hoppebevægelsen
+
+    function bounce() {
+      d3.selectAll("circle")
+        .transition()
+        .duration(duration / 2)
+        .attr("cy", d => 100 - amplitude)
+        .transition()
+        .duration(duration / 2)
+        .attr("cy", d => 100)
+        .on("end", bounce); // start forfra, når animationen er færdig
+    }
+
+    d3.select("#klik")
+      // Koden herunder køres kun ved tryk på knappen
+      .on("click", function () {
+        bounce(); // start animationen
+      });
+  </script>
+</body>
+
+</html>

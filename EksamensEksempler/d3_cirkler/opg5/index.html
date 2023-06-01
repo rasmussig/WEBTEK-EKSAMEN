@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="d3.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+    const Width = 600;
+    const Height = 600;
+    
+    // Selve datasættet
+    const dataset = [15, 5, 10, 25];
+    
+    // Lav SVG-elementet
+    const svg = d3.select("body")
+    .append("svg")
+    .attr("width", Width)
+    .attr("height", Height);
+    
+    // Lav cirkler
+    svg.selectAll("circle")
+    .data(dataset)
+    .enter()
+    .append("circle")
+    .attr("cx", 50)
+    .attr("cy", function (d, i) {
+       return 50 + i * 80;
+})
+    .attr("r", function (d) {
+           return d * 2;
+    })
+    .attr("stroke", "orange")
+    .attr("fill", "none");
+    </script>
+    </body>
+    </html>

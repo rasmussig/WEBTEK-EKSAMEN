@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Time scale</title>
+		<script type="text/javascript" src="../d3_v450.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			//Width and height
+			var w = 1100;
+			var h = 400;
+			var padding = 4;
+			
+			var xScale, yScale;  //Empty, for now
+
+			//For converting strings to Dates
+			var parseTime = d3.timeParse("%m/%d/%y");
+
+			//For converting Dates to strings
+			var formatTime = d3.timeFormat("%b %e");
+
+			//Function for converting CSV values from strings to Dates and numbers
+			var rowConverter = function(d) {
+				return {
+					Date: parseTime(d.date),
+					Amount: parseInt(d.amount)
+				};
+			}
+
+			var handleFunction = function(dataset) {
+				console.info(dataset);
+				//Create scale functions
+				xScale = d3.scaleTime()
+							   .domain([
+									d3.min(dataset, function(d) { return d.Date; }),
+									d3.max(dataset, function(d) { return d.Date; })
+								])
+							   .range([0, w]);
+
+				yScale = d3.scaleLinear()
+							   .domain([
+									0,
+									d3.max(dataset, function(d) { return d.Amount; })
+								])
+							   .range([0,h]);
+		
+				//Create SVG element
+				var svg = d3.select("body")
+							.append("svg")
+							.attr("width", w)
+							.attr("height", h);
+
+
+				//Generate bars
+				svg.selectAll("rect")
+				   .data(dataset)
+				   .enter()
+				   .append("rect")
+				   .attr("x", function(d) {
+				   		return xScale(d.Date);
+				   })
+				   .attr("y", function(d) {
+				   		return h - yScale(d.Amount);
+				   })
+				   .attr("width", w/dataset.length-2)
+				   .attr("height",function(d) {
+					                   return yScale(d.Amount);
+			                      })
+				   .attr("fill", "blue");
+
+				
+                 svg.selectAll("text")
+				    .data(dataset)
+				    .enter()
+				    .append("text")
+				    .text(function(d) {
+						return formatTime(d.Date);
+				     })
+				.attr("x", function(d) {
+						return xScale(d.Date);
+				})
+				.attr("y", function(d) {
+						return h-yScale(d.Amount) + 10;
+				})
+				.attr("font-family", "sans-serif")
+				.attr("font-size", "11px")
+				.attr("fill", "#bbb");
+				
+			}
+			//Load in the data
+			d3.csv("time_scale_data.csv", rowConverter, handleFunction);
+			
+		</script>
+	</body>
+</html>

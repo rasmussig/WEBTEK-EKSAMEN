@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flot grafik</title>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+  <svg id="grafik" width="500" height="500"></svg>
+
+  <script> // Simple regnestykker med javascript 
+    let a = 42;
+    let b = 9000;
+    const pi = 3.14159265359;
+
+    let velkomst = "Hej med dig grimme";
+    let navn = " Rasmus";
+
+    console.log(a+b)
+    console.log(a*pi)
+    console.log(velkomst+navn)
+  </script>
+
+
+<script>  // 4 * smiley face i en box //
+let offsetX = 0;
+let offsetY = 0;
+  drawBox(offsetX+0, offsetY+0, 250, 250,"blue");
+  drawCircle(offsetX+100, offsetY+100, 50, "yellow");
+  drawLine(offsetX+80, offsetY+120, offsetX+120, offsetY+120, "black");
+  drawCircle(offsetX+80, offsetY+70, 5, "white");
+  drawCircle(offsetX+110, offsetY+70, 5, "white");
+  drawLine(offsetX+50, offsetY+50, offsetX+150, offsetY+50, "black");
+  drawBox(offsetX+80, offsetY+10, 40, 40,"black");
+
+     //looper de 4 smiley face på en række.
+
+  for (let i = 0; i < 4; i++) {
+ offsetX = i*200;
+
+ drawBox(offsetX+0, offsetY+0, 250, 250,"blue");
+  drawCircle(offsetX+100, offsetY+100, 50, "yellow");
+  drawLine(offsetX+80, offsetY+120, offsetX+120, offsetY+120, "black");
+  drawCircle(offsetX+80, offsetY+70, 5, "white");
+  drawCircle(offsetX+110, offsetY+70, 5, "white");
+  drawLine(offsetX+50, offsetY+50, offsetX+150, offsetY+50, "black");
+  drawBox(offsetX+80, offsetY+10, 40, 40,"black");
+}
+      //De 4 smiley face i en box 2*2
+
+  /*offsetX = 250;
+  offsetY = 0;  
+
+  drawBox(offsetX+0, offsetY+0, 250, 250,"blue");
+    drawCircle(offsetX+100, offsetY+100, 50, "yellow");
+    drawLine(offsetX+80, offsetY+120, offsetX+120, offsetY+120, "black");
+    drawCircle(offsetX+80, offsetY+70, 5, "white");
+    drawCircle(offsetX+110, offsetY+70, 5, "white");
+    drawLine(offsetX+50, offsetY+50, offsetX+150, offsetY+50, "black");
+    drawBox(offsetX+80, offsetY+10, 40, 40,"black");
+
+    offsetX = 250;
+    offsetY = 250;  
+
+  drawBox(offsetX+0, offsetY+0, 250, 250,"blue");
+    drawCircle(offsetX+100, offsetY+100, 50, "yellow");
+    drawLine(offsetX+80, offsetY+120, offsetX+120, offsetY+120, "black");
+    drawCircle(offsetX+80, offsetY+70, 5, "white");
+    drawCircle(offsetX+110, offsetY+70, 5, "white");
+    drawLine(offsetX+50, offsetY+50, offsetX+150, offsetY+50, "black");
+    drawBox(offsetX+80, offsetY+10, 40, 40,"black");
+
+    offsetX = 0;
+    offsetY = 250;  
+
+    drawBox(offsetX+0, offsetY+0, 250, 250,"blue");
+    drawCircle(offsetX+100, offsetY+100, 50, "yellow");
+    drawLine(offsetX+80, offsetY+120, offsetX+120, offsetY+120, "black");
+    drawCircle(offsetX+80, offsetY+70, 5, "white");
+    drawCircle(offsetX+110, offsetY+70, 5, "white");
+    drawLine(offsetX+50, offsetY+50, offsetX+150, offsetY+50, "black");
+    drawBox(offsetX+80, offsetY+10, 40, 40,"black"); */
+</script>
+
+<script> // loops
+for (let i = 0; i < 20; i++) {
+  console.log("Hello, world!" + i);
+}
+
+    //tælle-variablen, tæller fra 0-99
+for (let i = 0; i < 100  ; i++) {
+  console.log("Gennemløb nr. :" + i);
+}
+
+    //Sum-algoritme
+let sum = 0;
+for (let i = 5; i <= 16; i++) {
+  sum = sum + i;
+}
+console.log("Den endelige sum: ", sum);
+
+</script>
+
+</body>
+</html>

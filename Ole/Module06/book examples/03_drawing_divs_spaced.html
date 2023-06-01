@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Drawing divs, spaced out</title>
+		<script type="text/javascript" src="../d3.js"></script>
+		<style type="text/css">
+		
+			div.bar {
+				display: inline-block;
+				width: 20px;
+				margin-right: 2px;
+				background-color: teal;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+let scale = d3.scaleLinear()
+            .domain([0,100])
+            .range([500, 0]);
+
+// Her testes scale-funktionen
+console.log(scale(0));   // Skal udskrive '500'
+console.log(scale(50)); // Skal udskrive '250'
+console.log(scale(100)); // Skal udskrive '0'
+		
+		    let dataset = [ 5, 10, 15, 20, 25, 2, 34, 12, 4 ];
+			
+			d3.select("body").selectAll("div")
+				.data(dataset)
+				.enter()
+				.append("div")
+				.attr("class", "bar")
+				.style("height", function(d) {
+					var barHeight = d * 5;
+					return barHeight + "px";
+				})
+				.style("background-color", function(d){
+					if (d < 15)
+					   return "red";
+					else
+					   return "teal";
+				});
+			
+		</script>
+	</body>
+</html>
