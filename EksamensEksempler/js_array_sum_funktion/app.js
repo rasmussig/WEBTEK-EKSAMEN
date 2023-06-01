@@ -6,5 +6,5 @@ function sum(a) {
  }
 
  const a = [1,2,3,4,5]
-
- console.log(sum(a))
+ const resultat = sum(a)
+ console.log(resultat)
