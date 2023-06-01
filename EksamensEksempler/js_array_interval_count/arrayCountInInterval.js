@@ -1,11 +1,13 @@
-/*Skriv en funktion i Javascript, som kan tælle hvor mange tal fra et array, som er i et givet interval.
+/*Skriv en funktion i Javascript, som kan tælle hvor mange tal fra 
+et array, som er i et givet interval.
 
 funktionen har tre parametre:
 
 a - arrayet som indeholder tallene
 minimum - nedre grænse i intervallet
 maximum - øvre grænse i intervallet
-Funktionen skal hedde countInInterval og returnere hvor mange af tallene i a som ligger mellem minimum og maximum (begge inklusiv).  
+Funktionen skal hedde countInInterval og returnere hvor mange af 
+tallene i a som ligger mellem minimum og maximum (begge inklusiv).  
 */
 
 function countInInterval(a, minimum, maximum) {
