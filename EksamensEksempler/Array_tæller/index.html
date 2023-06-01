@@ -17,24 +17,24 @@ maximum - øvre grænse i intervallet
 Funktionen skal returnere hvor mange af tallene i arrayet der ligger mellem minimum og maximum.-->
 
     <script>
-        function tæller(data, minimum, maximum) {
+        function countInInterval(a, minimum, maximum) {
             let count = 0;
 
-            for (let i = 0; i < data.length; i++) {
-                if (minimum <= data[i] && data[i] <= maximum) 
+            for (let i = 0; i < a.length; i++) {
+                if (a[i] >= minimum && a[i] <= maximum) {
+
                     count++;
+                }
             }
             return count;
         }
 
-        const data = [
-            [5], [10], [15], [20], [30], [40], [50]
-        ];
+        const a = [2, 5, 8, 10, 15, 20];
 
-        const minimum = 10;
-        const maximum = 30;
+        const minimum = 5;
+        const maximum = 15;
 
-        const count = tæller(data, minimum, maximum);
+        const result = countInInterval(a, minimum, maximum);
 
         console.log(`Antal tal mellem ${minimum} og ${maximum} i arrayet er: ${count}`);
 
