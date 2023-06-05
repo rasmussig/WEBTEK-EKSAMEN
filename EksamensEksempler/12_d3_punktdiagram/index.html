@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="d3.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        // Selve datasættet
+        let dataset = [[1, 1.3], [5, 2.5], [8, 3.3], [7, 3.4], [6, 9.1],
+                         [23, 6.8], [45, 11.2], [70, 8.6], [89, 4.9]];
+
+        // Erklær lineære skaleringer
+        const xScale = d3.scaleLinear()
+            //domain er indputområde af værdierne
+            .domain([1, 90])
+            //range er outputområdet af værdierne, range kan ændres til .range([5, 795]); for at undgå nogle af prikkerne bliver bekåret.
+            .range([0, 800]);
+
+        const yScale = d3.scaleLinear()
+            .domain([0, 12])
+            //range kan ændres til .range([495, 5]); for at ingen prikker bliver beskåret.
+            .range([500, 0]);
+
+        // Generér punkterne i et svg-element
+        d3.select("body")
+            .append("svg")
+            .attr("width", 800)
+            .attr("height", 500)
+            .selectAll("circle")
+            .data(dataset)
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) { return xScale(d[0]); }) // Brug xScale til at skalere x-værdien
+            .attr("cy", function (d) { return yScale(d[1]); }) // Brug yScale til at skalere y-værdien
+            .attr("r", 5)
+            .attr("fill", "blue");
+    </script>
+</body>
+
+</html>
