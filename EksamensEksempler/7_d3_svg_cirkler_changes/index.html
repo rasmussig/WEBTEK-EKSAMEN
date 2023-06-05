@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="d3.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        const Width = 600;
+        const Height = 600;
+
+        // Selve datasættet
+        const dataset = [15, 5, 10, 25];
+
+        // Lav SVG-elementet
+
+        const svg = d3.select("body")
+            .append("svg")
+            .attr("width", Width)
+            .attr("height", Height);
+
+        // Lav cirkler
+        svg.selectAll("circle")
+            .data(dataset)
+            .enter()
+            .append("circle")
+            //tilføjer så cirklerne bliver vist trinvist
+            .transition()
+            .delay(function (d, i) { return i * 3000; }) // tilføjer forsinkelse baseret på indeks
+            .duration(1000)
+            /*Lige nu forekommer cirklerne ved siden af hinanden, hvis det skal ændres til at være 
+            under hinaden skal vi ændre på funktionen i cx til og stå i cy */
+            .attr("cx", function (d, i) {
+                return 50 + i * 80;
+            })
+            .attr("cy", 50)
+            .attr("r", function (d) {
+                return d * 2;
+            })
+            /*
+            .attr("fill", "orange"); -- Skal ændres til nedenstående for at data-elementer mindre en 10
+            får en bestemt farve */
+            .attr("fill", function (d) {
+                if (d < 10) {
+                    return "orange";
+                } else {
+                    return "red";
+                }
+            });
+            /* Hvis cirklerne ikke skal være fyldt med en farve men blot have en kant skal nedenstående tilføjes/ændres
+            .attr("stroke", "orange")
+            .attr("fill", "none"); */
+    </script>
+</body>
+
+</html>
