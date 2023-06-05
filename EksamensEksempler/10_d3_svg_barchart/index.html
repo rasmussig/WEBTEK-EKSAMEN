@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="d3.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        // Selve datasættet
+        const dataset = [15, 5, 10, 25, 85, 50, 95];
+    
+        // Lav SVG-elementet
+
+        const svg = d3.select("body")
+            .append("svg")
+            .attr("width", 800)
+            .attr("height", 500)
+            .selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            //For at beholde lidt mellemrum mellem søjlerne kan vi oppe nedenstående til 20 istedet for 10
+            //.attr("x", function (d, i) { return i * 20; })
+            .attr("x", function (d, i) { return i * 10; })
+            .attr("y", function (d) { return 500 - (d * 4); })
+            //Ændre nedenstående for at gøre søjlerne bredere .attr("width", 15)
+            .attr("width", 8)
+            .attr("height", function (d) { return 4 * d; })
+            //hvis data elementet er mindre en 80 skal søjlen være blå. Hvis data elementet er større end eller lig 80, skal de være røde.
+            .attr("fill", function(d) {
+                if(d < 80) {
+                    return "blue"
+                } else if (d >= 80) {
+                    return "red"
+                }
+
+            });
+           
+    </script>
+</body>
+
+</html>

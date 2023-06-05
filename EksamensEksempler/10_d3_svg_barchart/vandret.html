@@ -1,0 +1,48 @@
+<!-- Når barcharten skal vendes fra at være lodret til og være vandret, bliver attributternes funktioner byttet rundt,
+Altså betyder width nu, længden på bars, mens height angiver breden på bars-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="d3.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        // Selve datasættet
+        const dataset = [15, 5, 10, 25, 85, 50, 95];
+    
+        // Lav SVG-elementet
+
+        const svg = d3.select("body")
+            .append("svg")
+            .attr("width", 800)
+            .attr("height", 500)
+            .selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            //x, sættes blot til 0 eller 10, da alle bars skal starte fra samme position på x-aksen. 
+            .attr("x", 0)
+            //y, attributten angiver nu hvor hvor på y-aksen, hvor bars placers, her med 40 px mellemrum. 
+            .attr("y",  function (d, i) { return i * 40; })
+            //Width angiver nu "længden" på bars og skal være en funktion af datasættet fordi bars er vandrette.
+            .attr("width", function (d) { return d; })
+            //Height angiver vi blot til 20, da det nu er "bredden"
+            .attr("height", 20)
+            //hvis data elementet er mindre en 80 skal søjlen være blå. Hvis data elementet er større end eller lig 80, skal de være røde.
+            .attr("fill", function(d) {
+                if(d < 80) {
+                    return "blue"
+                } else if (d >= 80) {
+                    return "red"
+                }
+
+            });
+           
+    </script>
+</body>
+
+</html>
