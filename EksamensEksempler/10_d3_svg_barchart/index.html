@@ -10,6 +10,9 @@
 
         // Selve datasættet
         const dataset = [15, 5, 10, 25, 85, 50, 95];
+
+        //a) Laver en const for at sikre mellemrum mellem søjlerne, og til at ændre på bredden
+        const w = 20
     
         // Lav SVG-elementet
 
@@ -21,14 +24,14 @@
             .data(dataset)
             .enter()
             .append("rect")
-            //For at beholde lidt mellemrum mellem søjlerne kan vi oppe nedenstående til 20 istedet for 10
-            //.attr("x", function (d, i) { return i * 20; })
-            .attr("x", function (d, i) { return i * 10; })
+            //a) For at beholde lidt mellemrum mellem søjlerne ændre .attr("x", function (d, i) { return i * 20; })
+            //til { return i * (w + 5); })
+            .attr("x", function (d, i) { return i * (w + 5); })
             .attr("y", function (d) { return 500 - (d * 4); })
-            //Ændre nedenstående for at gøre søjlerne bredere .attr("width", 15)
-            .attr("width", 8)
+            //a) Ændre nedenstående fra .attr("width", 15) til .attr("width", w) fra konstanten
+            .attr("width", w)
             .attr("height", function (d) { return 4 * d; })
-            //hvis data elementet er mindre en 80 skal søjlen være blå. Hvis data elementet er større end eller lig 80, skal de være røde.
+            //b) hvis data elementet er mindre en 80 skal søjlen være blå. Hvis data elementet er større end eller lig 80, skal de være røde.
             .attr("fill", function(d) {
                 if(d < 80) {
                     return "blue"
