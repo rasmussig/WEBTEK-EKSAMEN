@@ -27,6 +27,7 @@ const a = [2, 5, 8, 10, 15, 20];
 const minimum = 5;
 const maximum = 15;
 
-const count = countInInterval(a, minimum, maximum);
+const count = countInInterval(a, minimum, maximum); 
 
 console.log(`Antal tal mellem ${minimum} og ${maximum} i arrayet er: ${count}`);
+console.log((countInInterval([2, 5, 8, 10, 15, 20], 5, 15)))
