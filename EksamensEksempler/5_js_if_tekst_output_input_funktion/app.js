@@ -1,5 +1,5 @@
 function udskrivTekstBesked(tekst) {
-    if (tekst.includes("banankage")) {
+  if (tekst.includes("banankage") || tekst.includes("Banankage")) {
       console.log("Det er lækkert");
     } else if (tekst.length > 50) {
       console.log("Det var en lang tekst");
