@@ -22,5 +22,8 @@ function beregnAfgift(beløb) {
 const beløb = 120000;
 const afgift = beregnAfgift(beløb);
 console.log(afgift); // Output: 23000
+
 console.log(beregnAfgift(45000)) // Output: 0
 console.log(beregnAfgift(55000)) // Output: 1500
+
+console.log(`Afgiften for beløbet ${beløb} er: ${afgift}`)
