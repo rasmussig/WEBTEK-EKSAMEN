@@ -10,7 +10,7 @@ Hvordan vil du teste om funktionen er korrekt? */
 function aldersklassen (alder) {
 if (alder < 3) {
   return "Vuggestue";
-} else if (alder >= 3 && alder <= 6) {
+} else if (alder >= 3 && alder < 6) {
   return "Børnehave";
 } else if (alder >= 6 && alder < 16) {
   return "Skole";
@@ -20,6 +20,6 @@ if (alder < 3) {
 }
 
 console.info(aldersklassen(1)); // Forventet resultat: "Vuggestue"
-console.info(aldersklassen(4)); // Forventet resultat: "Børnehave"
-console.info(aldersklassen(10)); // Forventet resultat: "Skole"
+console.info(aldersklassen(5)); // Forventet resultat: "Børnehave"
+console.info(aldersklassen(6)); // Forventet resultat: "Skole"
 console.info(aldersklassen(20)); // Forventet resultat: "Voksen"

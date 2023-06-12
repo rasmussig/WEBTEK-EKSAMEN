@@ -2,7 +2,7 @@ function calculateSumOfOddNumbers(a) {
     let sum = 0;
   
     for (let i = 0; i < a.length; i++) {
-      if (a[i] % 2 !== 0) { // Tjekker om tallet er ulige
+      if (a[i] % 2 !== 0) { // Tjekker om tallet er ulige, fjern ! og sæt istedet === hvis det skal være lige numre.
         sum += a[i]; // Lægger tallet til summen
       }
     }
