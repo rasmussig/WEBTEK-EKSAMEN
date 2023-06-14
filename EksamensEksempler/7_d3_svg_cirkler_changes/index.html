@@ -52,6 +52,24 @@
             /* Hvis cirklerne ikke skal være fyldt med en farve men blot have en kant skal nedenstående tilføjes/ændres
         .attr("stroke", "orange")
         .attr("fill", "none"); */
+
+        /*For at undgå overlapping af cirklerne, kan du ændre følgende linje i koden:
+
+         . attr("cy", function (d, i) {
+        return 50 + i * 80;
+        })
+
+        Du kan justere den numeriske værdi, der lægges til i hver iteration, 
+        for at øge afstanden mellem cirklerne. Prøv at øge værdien 80 til f.eks. 100 eller mere, 
+        indtil cirklerne ikke overlapper længere. Her er et eksempel på ændret kode:
+
+        .attr("cy", function (d, i) {
+        return 50 + i * 100;
+        })
+
+        Når du øger værdien, vil cirklerne blive placeret længere fra hinanden på y-aksen og 
+        overlapningen burde blive mindre eller forsvinde helt, afhængigt af den faktiske størrelse af cirklerne. 
+        Du kan eksperimentere med forskellige værdier for at opnå det ønskede resultat.*/
     </script>
 </body>
 
