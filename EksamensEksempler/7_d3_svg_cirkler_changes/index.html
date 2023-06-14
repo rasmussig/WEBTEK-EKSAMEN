@@ -11,7 +11,7 @@
         const Height = 600;
 
         // Selve datasættet
-        const dataset = [15, 5, 10, 25];
+        const dataset = [15, 5, 10, 25, 55];
 
         // Lav SVG-elementet
 
@@ -27,7 +27,7 @@
             .append("circle")
             //tilføjer så cirklerne bliver vist trinvist
             .transition()
-            .delay(function (d, i) { return i * 3000; }) // tilføjer forsinkelse baseret på indeks
+            .delay(function (d, i) { return i * 1000; }) // tilføjer forsinkelse baseret på indeks
             .duration(1000)
             /*Lige nu forekommer cirklerne ved siden af hinanden, hvis det skal ændres til at være 
             under hinaden skal vi ændre på funktionen i cx til og stå i cy */
@@ -36,7 +36,8 @@
             })
             .attr("cy", 50)
             .attr("r", function (d) {
-                return d * 2;
+                var scaleFactor = 0.9; //OPG 3 --- Juster skaleringsfaktoren efter behov
+                return d * scaleFactor;
             })
             /*
             .attr("fill", "orange"); -- Skal ændres til nedenstående for at data-elementer mindre en 10
@@ -49,8 +50,8 @@
                 }
             });
             /* Hvis cirklerne ikke skal være fyldt med en farve men blot have en kant skal nedenstående tilføjes/ændres
-            .attr("stroke", "orange")
-            .attr("fill", "none"); */
+        .attr("stroke", "orange")
+        .attr("fill", "none"); */
     </script>
 </body>
 
