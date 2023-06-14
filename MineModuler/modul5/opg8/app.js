@@ -10,6 +10,7 @@ function SumLængdeTekst(array) {
 
 let frugter = ["banan", "æble", "pære", "melon"]
 console.log(SumLængdeTekst(frugter));
+console.log(SumLængdeTekst(["kat","hej","hund"]))
 
 //opg 8.2
 function SætArraySammen(array) {

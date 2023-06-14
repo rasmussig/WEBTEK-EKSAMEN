@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Jeopardy data</title>
   <script src="d3.js"></script>
@@ -8,7 +9,7 @@
 <body>
   <script>
     // Loader jeopardy-data og gør det tilgængeligt
-    d3.json("JEOPARDY_QUESTIONS.json").then(function(data) {
+    d3.json("JEOPARDY_QUESTIONS.json").then(function (data) {
       let jeopardy = data;
 
       // Tag spørgsmål nr. 442
@@ -29,6 +30,15 @@
 
       // Indsæt "svar":
       d3.select("body").append("p").text(spørgsmål.answer);
+
+      // Indsæt - "datoen hvor spørgsmålet blev brugt"
+      d3.select("body").append("p").text("Air Date: " + spørgsmål.air_date);
+
+      // Indsæt - "værdien af spørgsmålet (i dollars)"
+      d3.select("body").append("p").text("Spørgsmålets værdi: " + spørgsmål.value);
+
+      // Indsæt - spørgsmålets “show number” (udsendelsesnummer) 
+      d3.select("body").append("p").text("Spørgsmålets 'show number' er: " + spørgsmål.show_number);
     });
   </script>
 

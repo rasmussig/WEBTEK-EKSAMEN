@@ -22,7 +22,7 @@ function erSkudaar (year) {
         return false
     } 
 
-    console.log(erSkudaar(2020)); // Forventet output: true
-    console.log(erSkudaar(2021)); // Forventet output: false
-    console.log(erSkudaar(2000)); // Forventet output: true
-    console.log(erSkudaar(2100)); // Forventet output: false
+    console.log(erSkudaar(2020)); // Forventet output: True
+    console.log(erSkudaar(2000)); // Forventet output: True
+    console.log(erSkudaar(2004)); // Forventet output: True
+    console.log(erSkudaar(2001)); // Forventet output: False

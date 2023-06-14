@@ -98,13 +98,13 @@ Lav en variant hvor du selv har valgt 5-10 ord fra datasættet du vil visualiser
       .attr("y", function (d) {
         // 'y' er position for søjlens øverste kant
         // Husk, y-aksen vender på hovedet!
-        return h - (d * 4);
+        return h - (d/5);
       })
       // Bredden er fast - og afhænger af 'w' og antallet af datapunkter
       .attr("width", w / opsamling.length - barPadding) // Padding skaber luft imellem søjler
       // Højden er datapunktet * 4. 
       .attr("height", function (d) {
-        return d * 10;
+        return d/5;
       })
       // Farver søjler fordi jeg keder mig
       .attr("fill", function (d) {

@@ -17,6 +17,7 @@ function skudår(årstal) {
     }
 }
 
-console.log(skudår(2000));
-console.log(skudår(2024));
-console.log(skudår(2023));
+console.log(skudår(2020)); // Forventet output: True
+console.log(skudår(2000)); // Forventet output: True
+console.log(skudår(2004)); // Forventet output: True
+console.log(skudår(2001)); // Forventet output: False
