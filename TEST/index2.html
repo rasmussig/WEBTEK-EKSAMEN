@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="d3.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+const w = 300; // Bredden på SVG-elementet        
+const h = 200; // Højden på SVG-elementet          
+const barPadding = 5; // Bruges til at lave afstand imellem søjler        
+// Selve datasættet       
+let dataset = [3, 5, 1, 2, 4, 0];
+// Lav SVG-elementet       
+const svg = d3.select("body")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h);
+
+// Lave barchart (søjlediagram)       
+svg.selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    .attr("x", function (d, i) {
+        // Søjlerne spredes jævnt ud over 'w'              
+        return i * (w / dataset.length);
+    })
+    // Y-koordinaten er højden af SVG-elementet minus datapunktet * 4           
+    .attr("y", function (d) {
+        return h - (d * 4); // kan fjerne * 4 for at "skalere"   
+    })            // Bredden er fast - og afhænger af 'w' og antallet af datapunkter           
+    .attr("width", w / dataset.length - barPadding) // Padding skaber luft imellem søjler            // Højden er datapunktet * 4.            
+    .attr("height", function (d) {
+        return d * 4; // kan fjerne *4 for at "skalere"          
+      })       
+    .attr("fill", "Red"); 
+
+    </script>
+</body>
+
+</html>
